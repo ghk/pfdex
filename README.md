@@ -5,6 +5,7 @@ Chris Okasaki's Purely Functional Data Structure implementation in Elixir, writt
 Done: 
 
 1. Leftist Heap
+2. Binomial Heap
 
 ## Installation
 

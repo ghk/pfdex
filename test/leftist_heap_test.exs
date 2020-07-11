@@ -42,7 +42,7 @@ defmodule LeftistHeapTest do
   end
 
   test "kth max" do
-    list = [5, 7, 3, 212, 1, 8]
+    list = [5, 7, 3, 212, 1, 8, 2, 4]
     k = 3
     lh = LeftistHeap.kth_max(list, k)
     assert LeftistHeap.find_min(lh) == 7

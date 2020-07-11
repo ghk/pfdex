@@ -80,5 +80,4 @@ defmodule LeftistHeap do
       end)
   end
 
-
 end
