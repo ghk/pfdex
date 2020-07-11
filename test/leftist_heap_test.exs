@@ -29,4 +29,15 @@ defmodule LeftistHeapTest do
     lh =  LeftistHeap.delete_min(lh)
     assert LeftistHeap.find_min(lh) == 5
   end
+
+  test "size" do
+    lh = LeftistHeap.new([5, 7, 3, 212, 1, 8])
+    assert LeftistHeap.size(lh) == 6
+    lh =  LeftistHeap.delete_min(lh)
+    assert LeftistHeap.size(lh) == 5
+    lh =  LeftistHeap.delete_min(lh)
+    assert LeftistHeap.size(lh) == 4
+    lh = LeftistHeap.new([3, 212])
+    assert LeftistHeap.size(lh) == 2
+  end
 end

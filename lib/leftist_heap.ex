@@ -6,24 +6,30 @@ defmodule LeftistHeap do
   defstruct right: :empty,
             left: :empty,
             element: nil,
-            rank: 1
+            rank: 1,
+            size: 1
 
   @type t(a) :: %LeftistHeap{
     left: t(a),
     right: t(a),
     element: any(),
-    rank: non_neg_integer()
+    rank: non_neg_integer(),
+    size: non_neg_integer(),
   } | :empty
+
+  def size(:empty), do: 0
+  def size(%LeftistHeap{size: size}), do: size
 
   def rank(:empty), do: 0
   def rank(%LeftistHeap{rank: rank}), do: rank
 
   def makeT(x, a, b) do
     {rankA, rankB} = {rank(a), rank(b)}
+    {sizeA, sizeB} = {size(a), size(b)}
     if rankA >= rankA do
-      %LeftistHeap{element: x, rank: rankB + 1, left: a, right: b}
+      %LeftistHeap{element: x, rank: rankB + 1, size: sizeA + sizeB + 1, left: a, right: b}
     else
-      %LeftistHeap{element: x, rank: rankA + 1, left: b, right: a}
+      %LeftistHeap{element: x, rank: rankA + 1, size: sizeA + sizeB + 1, left: b, right: a}
     end
   end
 
