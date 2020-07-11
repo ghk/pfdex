@@ -68,5 +68,17 @@ defmodule LeftistHeap do
 
   def delete_min(%LeftistHeap{left: a, right: b}), do: merge(a, b)
 
+  def kth_max(list, k) do
+      list
+      |> Enum.reduce(:empty, fn x, h ->
+        h = LeftistHeap.insert(x, h)
+        if LeftistHeap.size(h) > k do
+          LeftistHeap.delete_min(h)
+        else
+          h
+        end
+      end)
+  end
+
 
 end
