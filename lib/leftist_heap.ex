@@ -46,10 +46,12 @@ defmodule LeftistHeap do
 
   @spec insert(any(), t(any())) :: t(any())
   def insert(x, :empty), do: %LeftistHeap{element: x}
-  def insert(x, h) do
-    x
-    |> insert(:empty)
-    |> merge(h)
+  def insert(x, %LeftistHeap{element: el, rank: r, size: s, right: b} = h) do
+    if x <= el do
+      %LeftistHeap{element: x, left: h, size: s + 1}
+    else
+      %LeftistHeap{h | right: insert(x, b), rank: r + 1, size: s + 1}
+    end
   end
 
   def new([]), do: :empty
